@@ -281,4 +281,4 @@ volumes:
 | `OLLAMA_BASE_URL` | `http://host.docker.internal:11434` | Ollama server URL |
 | `WEBUI_NAME` | `APIA` | App display name |
 | `WEBUI_SECRET_KEY` | (empty) | Secret key for sessions |
-| `APIA_PORT` | `3000` | Host port to expose |
+| `WEBUI_PORT` | `3000` | Host port to expose |
