@@ -16,6 +16,31 @@ export default defineConfig({
 			]
 		})
 	],
+	server: {
+		proxy: {
+			'/api': {
+				target: 'http://localhost:8080',
+				changeOrigin: true
+			},
+			'/static': {
+				target: 'http://localhost:8080',
+				changeOrigin: true
+			},
+			'/ollama': {
+				target: 'http://localhost:8080',
+				changeOrigin: true
+			},
+			'/openai': {
+				target: 'http://localhost:8080',
+				changeOrigin: true
+			},
+			'/socket.io': {
+				target: 'http://localhost:8080',
+				changeOrigin: true,
+				ws: true
+			}
+		}
+	},
 	define: {
 		APP_VERSION: JSON.stringify(process.env.npm_package_version),
 		APP_BUILD_HASH: JSON.stringify(process.env.APP_BUILD_HASH || 'dev-build')

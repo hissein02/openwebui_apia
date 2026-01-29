@@ -40,6 +40,8 @@ RUN npm ci --force
 
 COPY . .
 ENV APP_BUILD_HASH=${BUILD_HASH}
+# Increase Node.js memory limit to prevent OOM during build
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 RUN npm run build
 
 ######## WebUI backend ########

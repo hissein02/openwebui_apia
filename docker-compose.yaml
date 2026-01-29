@@ -1,32 +1,30 @@
 services:
-  ollama:
-    volumes:
-      - ollama:/root/.ollama
-    container_name: ollama
-    pull_policy: always
-    tty: true
-    restart: unless-stopped
-    image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
-
-  open-webui:
+  apia:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
-    container_name: open-webui
+      args:
+        - USE_OLLAMA=false
+    image: ${DOCKER_IMAGE_NAME:-apia}:${DOCKER_IMAGE_TAG:-latest}
+    container_name: apia
     volumes:
-      - open-webui:/app/backend/data
-    depends_on:
-      - ollama
+      - apia-data:/app/backend/data
     ports:
-      - ${OPEN_WEBUI_PORT-3000}:8080
+      - ${WEBUI_PORT:-3000}:8080
     environment:
-      - 'OLLAMA_BASE_URL=http://ollama:11434'
-      - 'WEBUI_SECRET_KEY='
+      # Required: Set your remote Ollama server URL
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      # App name (customize as needed)
+      - WEBUI_NAME=${WEBUI_NAME:-APIA}
+      # Security
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY:-}
+      # Disable telemetry
+      - SCARF_NO_ANALYTICS=true
+      - DO_NOT_TRACK=true
+      - ANONYMIZED_TELEMETRY=false
     extra_hosts:
       - host.docker.internal:host-gateway
     restart: unless-stopped
 
 volumes:
-  ollama: {}
-  open-webui: {}
+  apia-data: {}
