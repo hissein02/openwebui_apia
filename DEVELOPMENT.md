@@ -73,6 +73,8 @@ pip install -r requirements.txt
 
 You need **two terminal windows**:
 
+#### macOS / Linux
+
 **Terminal 1 - Backend:**
 
 ```bash
@@ -81,13 +83,36 @@ source venv/bin/activate
 ./dev.sh
 ```
 
-The backend will run on `http://localhost:8080`
-
 **Terminal 2 - Frontend:**
 
 ```bash
 npm run dev
 ```
+
+#### Windows (PowerShell or Command Prompt)
+
+**Terminal 1 - Backend:**
+
+```powershell
+cd backend
+.\venv\Scripts\activate
+python -m uvicorn open_webui.main:app --host 0.0.0.0 --port 8080 --reload
+```
+
+**Terminal 2 - Frontend:**
+
+```powershell
+npm run dev
+```
+
+> **Note for Windows users:**
+> - Use PowerShell or Command Prompt (not Git Bash for the backend)
+> - If you get execution policy errors in PowerShell, run: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+> - Make sure Python 3.11 is in your PATH
+
+---
+
+The backend will run on `http://localhost:8080`
 
 The frontend will run on `http://localhost:5173`
 
