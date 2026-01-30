@@ -35,7 +35,7 @@
 </svelte:head>
 
 <div
-	class="math-background absolute inset-0 overflow-hidden pointer-events-none z-0 opacity-5 select-none font-handwritten"
+	class="math-background absolute inset-0 overflow-hidden pointer-events-none z-0 opacity-6 select-none font-handwritten"
 >
 	<div class="animate-scrolling-text">
 		{#each Array(10) as _, i}

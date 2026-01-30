@@ -551,6 +551,11 @@
 	const isWindows = /Windows/i.test(navigator.userAgent);
 </script>
 
+<svelte:head>
+	<link href="https://fonts.cdnfonts.com/css/amores-free-font" rel="stylesheet" />
+	<link href="https://fonts.cdnfonts.com/css/kbloveitdown" rel="stylesheet" />
+</svelte:head>
+
 <ArchivedChatsModal
 	bind:show={$showArchivedChats}
 	onUpdate={async () => {
@@ -670,8 +675,9 @@
 					>
 						<div class=" self-center flex items-center justify-center size-9">
 							<img
-								src="{WEBUI_BASE_URL}/static/favicon.png"
+								src="{WEBUI_BASE_URL}/favicon.png"
 								class="sidebar-new-chat-icon size-6 rounded-full group-hover:hidden"
+								style="font-family: 'KBLOVEITDOWN', sans-serif;"
 								alt=""
 							/>
 
@@ -856,26 +862,27 @@
 				: 'invisible'}"
 		>
 			<div
-				class="sidebar px-[0.5625rem] pt-2 pb-1.5 flex justify-between space-x-1 text-gray-200 dark:text-gray-400 sticky top-0 z-10 -mb-3"
+				class="sidebar px-[0.5625rem] pt-2 pb-3 flex justify-between space-x-1 text-gray-200 dark:text-gray-400 sticky top-0 z-10 -mb-3"
 			>
 				<a
-					class="flex items-center rounded-xl size-8.5 h-full justify-center hover:bg-black/20 dark:hover:bg-gray-850/50 transition no-drag-region"
+					class="flex items-center rounded-xl size-12 h-full justify-center hover:bg-black/20 dark:hover:bg-gray-850/50 transition no-drag-region"
 					href="/"
 					draggable="false"
 					on:click={newChatHandler}
 				>
 					<img
 						crossorigin="anonymous"
-						src="{WEBUI_BASE_URL}/static/favicon.png"
-						class="sidebar-new-chat-icon size-6 rounded-full"
+						src="{WEBUI_BASE_URL}/favicon.png"
+						class="sidebar-new-chat-icon size-12 rounded-full"
 						alt=""
 					/>
 				</a>
 
-				<a href="/" class="flex flex-1 px-1.5" on:click={newChatHandler}>
+				<a href="/" class="flex flex-1 px-1.5 text-xl" on:click={newChatHandler}>
 					<div
 						id="sidebar-webui-name"
 						class=" self-center font-medium text-white dark:text-white font-primary"
+						style="font-family: 'KBLOVEITDOWN', sans-serif;"
 					>
 						{$WEBUI_NAME}
 					</div>
