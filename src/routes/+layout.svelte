@@ -620,6 +620,7 @@
 	};
 
 	onMount(async () => {
+		console.log('hh: ', WEBUI_BASE_URL);
 		window.addEventListener('message', windowMessageEventHandler);
 
 		let touchstartY = 0;

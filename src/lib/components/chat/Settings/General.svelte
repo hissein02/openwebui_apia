@@ -276,7 +276,7 @@
 			</div>
 		</div>
 
-		{#if $user?.role === 'admin' || (($user?.permissions.chat?.controls ?? true) && ($user?.permissions.chat?.system_prompt ?? true))}
+		{#if $user?.role === 'admin' && ($user?.permissions.chat?.controls ?? true) && ($user?.permissions.chat?.system_prompt ?? true)}
 			<hr class="border-gray-100/30 dark:border-gray-850/30 my-3" />
 
 			<div>
