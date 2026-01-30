@@ -326,11 +326,6 @@
 										<label for="password" class="text-sm font-semibold text-gray-700"
 											>{$i18n.t('Mot de passe')}</label
 										>
-										{#if mode === 'signin'}
-											<a href="#" class="text-xs font-medium text-gray-900 hover:underline"
-												>Mot de passe oublié ?</a
-											>
-										{/if}
 									</div>
 									<SensitiveInput
 										bind:value={password}
