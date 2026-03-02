@@ -1,0 +1,33 @@
+services:
+  apia:
+    build:
+      context: .
+      dockerfile: Dockerfile.light
+    image: ${DOCKER_IMAGE_NAME:-apia}:${DOCKER_IMAGE_TAG:-light}
+    container_name: apia-light
+    volumes:
+      - apia-data:/app/backend/data
+    ports:
+      - ${WEBUI_PORT:-3000}:8080
+    environment:
+      # Required: Set your remote Ollama server URL
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      # App name (customize as needed)
+      - WEBUI_NAME=${WEBUI_NAME:-APIA}
+      # Security
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY:-}
+      # Storage: local only (no S3/GCS/Azure in light mode)
+      - STORAGE_PROVIDER=local
+      # Disable telemetry
+      - SCARF_NO_ANALYTICS=true
+      - DO_NOT_TRACK=true
+      - ANONYMIZED_TELEMETRY=false
+      # RAG: use cloud embedding API (no local models)
+      - RAG_EMBEDDING_ENGINE=openai
+      - RAG_EMBEDDING_MODEL=${RAG_EMBEDDING_MODEL:-text-embedding-3-small}
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    restart: unless-stopped
+
+volumes:
+  apia-data: {}

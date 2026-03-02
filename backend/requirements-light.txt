@@ -1,0 +1,131 @@
+# APIA Light - Minimal requirements for cloud-API-only mode
+# No local ML models (no PyTorch, no sentence-transformers, no Whisper)
+# No cloud storage providers (no S3, GCS, Azure Blob)
+# No alternative vector DBs (ChromaDB only)
+# No heavy document processing (no unstructured, no pandas)
+
+# ============================================================
+# Core web framework
+# ============================================================
+fastapi==0.128.0
+uvicorn[standard]==0.40.0
+pydantic==2.12.5
+python-multipart==0.0.21
+itsdangerous==2.2.0
+
+# ============================================================
+# WebSocket & Auth
+# ============================================================
+python-socketio==5.16.0
+python-jose==3.5.0
+cryptography
+bcrypt==5.0.0
+argon2-cffi==25.1.0
+PyJWT[crypto]==2.10.1
+authlib==1.6.6
+
+# ============================================================
+# HTTP clients
+# ============================================================
+requests==2.32.5
+aiohttp==3.13.2
+async-timeout
+aiocache
+aiofiles
+starlette-compress==1.6.1
+httpx[socks,http2,zstd,cli,brotli]==0.28.1
+starsessions[redis]==2.2.1
+python-mimeparse==2.0.0
+
+# ============================================================
+# Database & ORM
+# ============================================================
+sqlalchemy==2.0.45
+alembic==1.17.2
+peewee==3.18.3
+peewee-migrate==1.14.3
+
+# ============================================================
+# Realtime / Scheduling
+# ============================================================
+pycrdt==0.12.44
+redis
+APScheduler==3.11.2
+RestrictedPython==8.1
+
+# ============================================================
+# Logging
+# ============================================================
+loguru==0.7.3
+asgiref==3.11.0
+
+# ============================================================
+# AI SDKs (cloud APIs only - no local models)
+# ============================================================
+tiktoken
+mcp==1.25.0
+openai
+anthropic
+google-genai==1.56.0
+
+# ============================================================
+# LangChain (core only)
+# ============================================================
+langchain==1.2.0
+langchain-community==0.4.1
+langchain-classic==1.0.1
+langchain-text-splitters==1.1.0
+
+# ============================================================
+# Vector DB (ChromaDB only)
+# ============================================================
+chromadb==1.4.0
+rank-bm25==0.2.2
+
+# ============================================================
+# Document parsing (basic - no unstructured, no pandas)
+# ============================================================
+fake-useragent==2.2.0
+ftfy==6.3.1
+chardet==5.2.0
+pypdf==6.5.0
+fpdf2==2.8.5
+pymdown-extensions==10.20
+docx2txt==0.9
+python-pptx==1.0.2
+msoffcrypto-tool==5.4.2
+nltk==3.9.2
+Markdown==3.10
+validators==0.35.0
+psutil
+
+# ============================================================
+# Image (basic)
+# ============================================================
+pillow==12.1.0
+
+# ============================================================
+# Code formatting (used by tools workspace)
+# ============================================================
+black==25.12.0
+
+# ============================================================
+# Audio (basic - cloud STT/TTS only, no local whisper)
+# ============================================================
+pydub
+
+# ============================================================
+# Web search
+# ============================================================
+ddgs==9.10.0
+
+# ============================================================
+# YouTube
+# ============================================================
+youtube-transcript-api==1.2.3
+pytube==15.0.0
+
+# ============================================================
+# LDAP
+# ============================================================
+ldap3==2.9.1

@@ -4,7 +4,11 @@ import ftfy
 import sys
 import json
 
-from azure.identity import DefaultAzureCredential
+try:
+    from azure.identity import DefaultAzureCredential
+except ImportError:
+    DefaultAzureCredential = None
+
 from langchain_community.document_loaders import (
     AzureAIDocumentIntelligenceLoader,
     BSHTMLLoader,

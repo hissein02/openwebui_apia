@@ -4,7 +4,12 @@ import sys
 from typing import TYPE_CHECKING
 
 from loguru import logger
-from opentelemetry import trace
+
+try:
+    from opentelemetry import trace
+except ImportError:
+    trace = None
+
 from open_webui.env import (
     ENABLE_AUDIT_STDOUT,
     ENABLE_AUDIT_LOGS_FILE,
@@ -75,7 +80,7 @@ class InterceptHandler(logging.Handler):
             otel_handler.emit(record)
 
     def _get_extras(self):
-        if not ENABLE_OTEL:
+        if not ENABLE_OTEL or trace is None:
             return {}
 
         extras = {}
